@@ -1,0 +1,17 @@
+{
+  "name": "handlebamdle",
+  "version": "1.0.0",
+  "description": "Bundle handlebars as AMD modules with partials as other AMD dependencies in mind.",
+  "main": "lib/index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [],
+  "author": "dmi3y <lapshukov@gmail.com>",
+  "license": "MIT",
+  "dependencies": {
+    "debug": "^2.2.0",
+    "glob": "^5.0.14",
+    "handlebars": "^4.0.2"
+  }
+}
