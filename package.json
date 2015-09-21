@@ -4,7 +4,7 @@
   "description": "Bundle handlebars as AMD modules with partials as other AMD dependencies in mind.",
   "main": "lib/index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "cd tests && node bundle.js && node index-node.js"
   },
   "keywords": [],
   "author": "dmi3y <lapshukov@gmail.com>",
@@ -12,6 +12,10 @@
   "dependencies": {
     "debug": "^2.2.0",
     "glob": "^5.0.14",
-    "handlebars": "^4.0.2"
+    "handlebars": "^4.0.2",
+    "mkdirp": "^0.5.1"
+  },
+  "devDependencies": {
+    "requirejs": "^2.1.20"
   }
 }
