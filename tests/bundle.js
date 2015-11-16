@@ -1,6 +1,5 @@
 hamdb = require("../lib/index.js");
 
 hamdb({
-	path: "templates-raw/*.hbs",
-	base: "templates-bundled"
+	path: "templates-raw/*.hbs"
 });

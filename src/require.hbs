@@ -1,0 +1,22 @@
+define(
+	[
+		"{{runtime}}",
+		"module",
+		{{#each dependencies}}
+			"{{.}}",
+		{{/each}}
+	],
+	function(Handlebars, module) {
+		Handlebars = Handlebars.default;
+		var template = Handlebars.template;
+		var templates = Handlebars.templates = Handlebars.templates || {};
+		var templateId = module.id;
+		if ( !templates[templateId] ) {
+			Handlebars.partials = templates;
+			templates[templateId] = template(
+				{{source}}
+			);
+		}
+		return templates[templateId];
+	}
+);
