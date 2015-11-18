@@ -6,7 +6,8 @@
   "scripts": {
     "test": "cd tests && node bundle.js && node index-node.js",
     "build": "bash scripts/build.sh",
-    "compile-templates": "bash scripts/compile-templates.sh"
+    "compile-templates": "bash scripts/compile-templates.sh",
+    "compile-scripts": "bash scripts/compile-scripts.sh"
   },
   "keywords": [],
   "author": "dmi3y <lapshukov@gmail.com>",
@@ -18,6 +19,7 @@
     "mkdirp": "^0.5.1"
   },
   "devDependencies": {
+    "babel-preset-es2015": "^6.1.18",
     "requirejs": "^2.1.20"
   }
 }

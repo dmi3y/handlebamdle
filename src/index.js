@@ -1,6 +1,7 @@
 #!/usr/bin/env node
+"use strict";
 
-var bundler = require("../lib/bundler");
+var bundler = require("./bundler");
 var glob = require("glob");
 var mkdirp = require("mkdirp");
 var debug = require("debug")("handlebamdle");
@@ -90,10 +91,10 @@ module.exports = function(opts) {
 		opts.out = opts.out || "./";
 
 		for (; len --> 0 ;) {
-			fname = fnames[len];
-			fpath = path.resolve(fname);
+			var fname = fnames[len];
+			var fpath = path.resolve(fname);
 			var d = {
-				fpath: fpath
+				fpath
 			};
 			
 			chain(d, opts);

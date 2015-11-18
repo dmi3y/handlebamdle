@@ -1,4 +1,4 @@
-hamdb = require("../lib/index.js");
+hamdb = require("../dist/index.js");
 
 hamdb({
 	path: "templates-raw/*.hbs"

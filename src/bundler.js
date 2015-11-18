@@ -28,10 +28,7 @@ function getDependencies(ast, base) {
 		}
 	}
 
-	var parts = [];
-	for ( var v of uparts ) {
-		parts.push(v);
-	}
+	var parts = Array.from(uparts);
 
 	return parts;
 }
