@@ -18,29 +18,30 @@ var debug = require("debug")("handlebamdle");
  */
  // cat {} | hbstorequire > $(basename {} .hbs).js
 
-function getDependencies(ast, base) {
+var getDependencies = ast => {
 	var body = ast.body;
-	var uparts = new Set();
+	var parts = [];
 
 	for ( var i = 0; i < body.length; i += 1 ) {
 		if ( body[i].type === "PartialStatement" ) {
-			uparts.add(body[i].name.original);
+			parts.push(body[i].name.original);
 		}
 	}
 
-	var parts = Array.from(uparts);
-
-	return parts;
-}
+	return Array.from(new Set(parts));
+};
 
 module.exports = function(tmplStr, opts) {
 	var str = tmplStr.toString();
 	var ast = Handlebars.parse(str);
 	opts = opts || {};
+	var runtime = opts.runtime || "handlebars.runtime";
+	var dependencies = getDependencies(ast);
+	var source = Handlebars.precompile(ast);
 
 	return wrapper({
-		runtime: opts.runtime || "handlebars.runtime",
-		dependencies: getDependencies(ast),
-		source: Handlebars.precompile(ast)
+		runtime,
+		dependencies,
+		source
 	});
 };

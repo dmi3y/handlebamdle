@@ -13,7 +13,7 @@ var fs = require("fs");
 function read(d, opts) {
 	var pr = new Promise(function(resolve, reject) {
 
-		fs.readFile(d.fpath, function(er, data) {
+		fs.readFile(d.fpath, (er, data) => {
 			if ( !er ) {
 				var str = data.toString();
 				d.str = str;
@@ -32,7 +32,7 @@ function read(d, opts) {
 function checker(d, opts) {
 	var fullpath = path.join(opts.out, opts.base);
 	var pr = new Promise(function(resolve, reject) {
-		mkdirp(path.resolve(fullpath), function(er) {
+		mkdirp(path.resolve(fullpath), er => {
 			if ( !er ) {
 				resolve(d);
 			} else {
@@ -49,7 +49,7 @@ function writer(d, opts) {
 	var name = parsed.name + ".js";
 	var fullpath = path.join(opts.out, opts.base, name);
 	var pr = new Promise(function(resolve, reject) {
-		fs.writeFile(path.resolve(fullpath), d.bundle, function(er) {
+		fs.writeFile(path.resolve(fullpath), d.bundle, er => {
 			if ( !er ) {
 				resolve("Template successfully written: " + fullpath);
 			} else {
@@ -84,9 +84,9 @@ function chain(d, opts) {
 		);
 }
 
-module.exports = function(opts) {
+module.exports = opts => {
 
-	glob(opts.path, function(er, fnames) {
+	glob(opts.path, (er, fnames) => {
 		var len = fnames.length;
 		opts.out = opts.out || "./";
 
