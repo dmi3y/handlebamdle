@@ -1,11 +1,7 @@
 "use strict";
 
-var path = require("path");
-var fs = require("fs");
-
 var Handlebars = require("handlebars");
 var wrapper = require("./require.hbs");
-var debug = require("debug")("handlebamdle");
 
 /**
  * This is one to one compilation
@@ -16,7 +12,6 @@ var debug = require("debug")("handlebamdle");
  * and will be included into dependecy list for this template
  *
  */
- // cat {} | hbstorequire > $(basename {} .hbs).js
 
 var getDependencies = ast => {
 	var body = ast.body;
