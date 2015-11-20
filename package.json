@@ -4,7 +4,7 @@
   "description": "Bundle handlebars as AMD modules with partials as other AMD dependencies in mind.",
   "main": "lib/index.js",
   "scripts": {
-    "test": "cd tests && node bundle.js && node index-node.js",
+    "test": "bash scripts/test.sh",
     "build": "bash scripts/build.sh",
     "compile-templates": "bash scripts/compile-templates.sh",
     "compile-scripts": "bash scripts/compile-scripts.sh",
