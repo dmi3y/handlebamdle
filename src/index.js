@@ -23,7 +23,7 @@ var getDependencies = ast => {
 		}
 	}
 
-	return Array.from(new Set(parts));
+	return [...new Set(parts)];
 };
 
 module.exports = function(tmplStr, opts) {
