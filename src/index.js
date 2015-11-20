@@ -1,103 +1,42 @@
-#!/usr/bin/env node
 "use strict";
 
-var bundler = require("./bundler");
-var glob = require("glob");
-var mkdirp = require("mkdirp");
-var debug = require("debug")("handlebamdle");
+var Handlebars = require("handlebars");
+var wrapper = require("./require.hbs");
 
-var path = require("path");
-var fs = require("fs");
+/**
+ * This is one to one compilation
+ *
+ * before wrapping module up as amd (requirejs)
+ * script walk through the source and pick up partials
+ * if any found they will be treated as a dependencies
+ * and will be included into dependecy list for this template
+ *
+ */
 
+var getDependencies = ast => {
+	var body = ast.body;
+	var parts = [];
 
-function read(d, opts) {
-	var pr = new Promise(function(resolve, reject) {
-
-		fs.readFile(d.fpath, (er, data) => {
-			if ( !er ) {
-				var str = data.toString();
-				d.str = str;
-				resolve(d);
-
-			} else {
-
-				reject("File could not be read: " + path);
-			}
-		});
-	});
-
-	return pr;	
-}
-
-function checker(d, opts) {
-	var fullpath = path.join(opts.out, opts.base);
-	var pr = new Promise(function(resolve, reject) {
-		mkdirp(path.resolve(fullpath), er => {
-			if ( !er ) {
-				resolve(d);
-			} else {
-				reject("Could not create outpt directory: " + fullpath);
-			}
-		});
-	});
-
-	return pr;
-}
-
-function writer(d, opts) {
-	var parsed = path.parse(d.fpath);
-	var name = parsed.name + ".js";
-	var fullpath = path.join(opts.out, opts.base, name);
-	var pr = new Promise(function(resolve, reject) {
-		fs.writeFile(path.resolve(fullpath), d.bundle, er => {
-			if ( !er ) {
-				resolve("Template successfully written: " + fullpath);
-			} else {
-				reject("Could not write template: " + fullpath);
-			}
-		});
-	});
-
-	return pr;
-}
-
-function chain(d, opts) {
-	read(d, opts)
-		.then(
-			function bundle(d) {
-				d.bundle = bundler(d.str, opts);
-				return d;
-			},
-			debug
-		)
-		.then(
-			function check(d) {
-				return checker(d, opts);
-			},
-			debug
-		)
-		.then(
-			function write(d) {
-				return writer(d, opts);
-			},
-			debug
-		);
-}
-
-module.exports = opts => {
-
-	glob(opts.path, (er, fnames) => {
-		var len = fnames.length;
-		opts.out = opts.out || "./";
-
-		for (; len --> 0 ;) {
-			var fname = fnames[len];
-			var fpath = path.resolve(fname);
-			var d = {
-				fpath
-			};
-			
-			chain(d, opts);
+	for ( var i = 0; i < body.length; i += 1 ) {
+		if ( body[i].type === "PartialStatement" ) {
+			parts.push(body[i].name.original);
 		}
+	}
+
+	return Array.from(new Set(parts));
+};
+
+module.exports = function(tmplStr, opts) {
+	var str = tmplStr.toString();
+	var ast = Handlebars.parse(str);
+	opts = opts || {};
+	var runtime = opts.runtime || "handlebars.runtime";
+	var dependencies = getDependencies(ast);
+	var source = Handlebars.precompile(ast);
+
+	return wrapper({
+		runtime,
+		dependencies,
+		source
 	});
 };
