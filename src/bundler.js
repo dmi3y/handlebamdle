@@ -30,9 +30,8 @@ function read(d, opts) {
 }
 
 function checker(d, opts) {
-	var fullpath = path.join(opts.out, opts.base);
 	var pr = new Promise(function(resolve, reject) {
-		mkdirp(path.resolve(fullpath), er => {
+		mkdirp(path.resolve(opts.out), er => {
 			if ( !er ) {
 				resolve(d);
 			} else {
@@ -47,7 +46,7 @@ function checker(d, opts) {
 function writer(d, opts) {
 	var parsed = path.parse(d.fpath);
 	var name = parsed.name + ".js";
-	var fullpath = path.join(opts.out, opts.base, name);
+	var fullpath = path.join(opts.out, name);
 	var pr = new Promise(function(resolve, reject) {
 		fs.writeFile(path.resolve(fullpath), d.bundle, er => {
 			if ( !er ) {

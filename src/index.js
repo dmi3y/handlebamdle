@@ -1,4 +1,5 @@
 "use strict";
+require("babel-polyfill");
 
 var Handlebars = require("handlebars");
 var wrapper = require("./require.hbs");
