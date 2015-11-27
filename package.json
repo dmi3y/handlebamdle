@@ -1,12 +1,12 @@
 {
   "name": "handlebamdle",
   "version": "1.0.0",
-  "description": "Bundle handlebars as AMD modules with partials as other AMD dependencies in mind.",
+  "description": "Bundle handlebars as AMD modules with partials as other AMD modules dependencies.",
   "main": "lib/index.js",
   "scripts": {
     "test": "bash scripts/test.sh",
     "build": "bash scripts/build.sh",
-    "compile-templates": "bash scripts/compile-templates.sh",
+    "compile-templates": "node scripts/compile-templates.js",
     "compile-scripts": "bash scripts/compile-scripts.sh",
     "watch-scripts": "bash scripts/watch-scripts.sh"
   },
@@ -14,6 +14,7 @@
   "author": "dmi3y <lapshukov@gmail.com>",
   "license": "MIT",
   "dependencies": {
+    "babel-polyfill": "^6.2.0",
     "debug": "^2.2.0",
     "glob": "^5.0.14",
     "handlebars": "^4.0.2",
