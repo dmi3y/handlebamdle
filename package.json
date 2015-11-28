@@ -3,6 +3,7 @@
   "version": "1.0.0",
   "description": "Bundle handlebars as AMD modules with partials as other AMD modules dependencies.",
   "main": "dist/index.js",
+  "bin": "bin/handlebamdle.js",
   "scripts": {
     "test": "bash scripts/test.sh",
     "build": "bash scripts/build.sh",
@@ -10,7 +11,12 @@
     "compile-scripts": "bash scripts/compile-scripts.sh",
     "watch-scripts": "bash scripts/watch-scripts.sh"
   },
-  "keywords": ["handlebars","requirejs","partials","amd"],
+  "keywords": [
+    "handlebars",
+    "requirejs",
+    "partials",
+    "amd"
+  ],
   "author": "dmi3y <lapshukov@gmail.com>",
   "license": "MIT",
   "dependencies": {
