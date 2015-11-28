@@ -1,4 +1,5 @@
-#!/usr/bin/env node -x
+#!/usr/bin/env node
+
 var fs = require("fs");
 var path = require("path");
 var Handlebars = require("handlebars");
