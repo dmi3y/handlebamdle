@@ -1,4 +1,4 @@
-hamdb = require("../dist/bundler.js");
+var hamdb = require("../dist/bundler.js");
 
 hamdb({
 	path: "templates-raw/*.hbs",

@@ -35,7 +35,7 @@ function checker(d, opts) {
 			if ( !er ) {
 				resolve(d);
 			} else {
-				reject("Could not create outpt directory: " + fullpath);
+				reject("Could not create output directory: " + opts.out);
 			}
 		});
 	});
