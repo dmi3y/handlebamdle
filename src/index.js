@@ -33,7 +33,7 @@ module.exports = function(tmplStr, opts) {
 	opts = opts || {};
 	var runtime = opts.runtime || "handlebars.runtime";
 	var dependencies = getDependencies(ast);
-	var source = Handlebars.precompile(ast);
+	var source = Handlebars.precompile(ast, opts);
 
 	return wrapper({
 		runtime,
