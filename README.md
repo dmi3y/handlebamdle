@@ -9,6 +9,26 @@ But what about getting more efficiency from power of requirejs? That's the ultim
 
 AMD (requirejs) bundler for handlebars templates. It treats partials as a templates, and includes partials-templates (if any) as a main module dependency.
 
+##Examples
+
+From nodejs script:
+
+````js
+var hamdb = require("handlebamdle");
+var fs = require("fs");
+
+var templateSrc = fs.readFileSync(__dirname + "templates-raw/template.hbs");
+
+var templateAmd = hamdb(templateSrc.toString())
+
+fs.writeFileSync(templateAmd, __dirname + "templates-compiled/template.hbs.js");
+
+````
+
+From bash command line:
+
+> find tests/templates-raw/ -name '*.hbs' -exec sh -c '"handlebamdle" < "${1}" > "tests/templates-bundled/$(basename ${1/hbs/js})"' -- {} \;
+
 ##Build from source
 
 Build - `npm run build`
