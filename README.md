@@ -25,7 +25,7 @@ fs.writeFileSync(templateAmd, __dirname + "templates-compiled/template.hbs.js");
 
 ````
 
-From bash command line:
+From command line:
 
 > find tests/templates-raw/ -name '*.hbs' -exec sh -c '"handlebamdle" < "${1}" > "tests/templates-bundled/$(basename ${1/hbs/js})"' -- {} \;
 
