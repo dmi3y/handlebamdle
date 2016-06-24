@@ -29,6 +29,10 @@ From command line:
 
 > find tests/templates-raw/ -name '*.hbs' -exec sh -c '"handlebamdle" < "${1}" > "tests/templates-bundled/$(basename ${1/hbs/js})"' -- {} \;
 
+Or less daunting, but less functional.
+
+> cat tests/templates-raw/test.hbs > handlebamdle > tests/templates-bundled/test.js
+
 ##Build from source
 
 Build - `npm run build`
