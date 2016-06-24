@@ -1,3 +1,3 @@
-#!/usr/bin/env bash -x
+#!/usr/bin/env bash
 
 babel src -d dist
