@@ -20,6 +20,7 @@
   "author": "dmi3y <lapshukov@gmail.com>",
   "license": "MIT",
   "dependencies": {
+    "babel-cli": "6.10.1",
     "babel-polyfill": "^6.2.0",
     "debug": "^2.2.0",
     "glob": "^5.0.14",
