@@ -1,6 +1,6 @@
 {
   "name": "handlebamdle",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "Bundle handlebars as AMD modules with partials as other AMD modules dependencies.",
   "main": "dist/index.js",
   "bin": "bin/handlebamdle.js",
