@@ -27,19 +27,23 @@ fs.writeFileSync(templateAmd, __dirname + "templates-compiled/template.hbs.js");
 
 From command line:
 
-> find tests/templates-raw/ -name '*.hbs' -exec sh -c '"handlebamdle" < "${1}" > "tests/templates-bundled/$(basename ${1/hbs/js})"' -- {} \;
+> mkdir ./tests/templates-bundled
 
-Or less daunting, less functional and less interesting overall.
+To bundle all templates from the folder and keep filenames.
 
-> cat tests/templates-raw/test.hbs | bin/handlebamdle.js > tests/templates-bundled/test.js
+> find ./tests/templates-raw/ -name '*.hbs' -exec sh -c '"./bin/handlebamdle.js" < "${1}" > "./tests/templates-bundled/$(basename ${1/hbs/js})"' -- {} \;
+
+Or single one, which is less daunting, less functional and less interesting overall.
+
+> cat ./tests/templates-raw/test.hbs | ./bin/handlebamdle.js > ./tests/templates-bundled/test.js
 
 ##Build from source
 
-Build - `npm run build`
+Build - `npm run build`  
 Test - `npm run test`
 
 ##Develop
 
-Build - `npm run build`
-Watch for scripts - `npm run watch-scripts`
+Build - `npm run build`  
+Watch for scripts - `npm run watch-scripts`  
 Test - `npm run test`
