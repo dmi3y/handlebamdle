@@ -1,6 +1,6 @@
->`Handlebars.partials = Handlebars.templates`
+>[`Handlebars.partials = Handlebars.templates`](https://stackoverflow.com/a/21173410https://stackoverflow.com/a/21173410)
 
-##Prefrase
+## Prefrase
 
 Handlebars partials oficially treated as separate class citizents, while they are templates just the same way as others. Days come by and developers figured out "magic formula" `Handlebars.partials = Handlebars.templates`, which works fine if all the precompiled templates being downloaded as a one file.
 But what about getting more efficiency from power of requirejs? That's the ultimate goal for this package.
@@ -9,7 +9,7 @@ But what about getting more efficiency from power of requirejs? That's the ultim
 
 AMD (requirejs) bundler for handlebars templates. It treats partials as a templates, and includes partials-templates (if any) as a main module dependency.
 
-##Examples
+## Examples
 
 From nodejs script:
 
@@ -37,12 +37,12 @@ Or single one, which is less daunting, less functional and less interesting over
 
 > cat ./tests/templates-raw/test.hbs | ./bin/handlebamdle.js > ./tests/templates-bundled/test.js
 
-##Build from source
+## Build from source
 
 Build - `npm run build`  
 Test - `npm run test`
 
-##Develop
+## Develop
 
 Build - `npm run build`  
 Watch for scripts - `npm run watch-scripts`  
